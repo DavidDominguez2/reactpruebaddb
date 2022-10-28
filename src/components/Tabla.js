@@ -26,31 +26,36 @@ export default class Tabla extends Component {
     if (oldProps.especialidad !== this.props.especialidad) {
       this.loadDoctores();
     }
+    if (oldProps.change !== true) {
+      this.loadDoctores();
+    }
   };
   render() {
     return (
       <div>
         <h1>Table Doctores {this.props.especialidad}</h1>
-        <table border="1">
-          <thead>
-            <tr>
-              <th>Apellido</th>
-              <th>Especialidad</th>
-              <th>Salario</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.doctores.map((doctor, index) => {
-              return (
-                <tr key={doctor.idDoctor}>
-                  <td>{doctor.apellido}</td>
-                  <td>{doctor.especialidad}</td>
-                  <td>{doctor.salario}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        {this.state.status && (
+          <table border="1">
+            <thead>
+              <tr>
+                <th>Apellido</th>
+                <th>Especialidad</th>
+                <th>Salario</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.doctores.map((doctor, index) => {
+                return (
+                  <tr key={doctor.idDoctor}>
+                    <td>{doctor.apellido}</td>
+                    <td>{doctor.especialidad}</td>
+                    <td>{doctor.salario}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        )}
       </div>
     );
   }
