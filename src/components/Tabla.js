@@ -31,7 +31,7 @@ export default class Tabla extends Component {
     return (
       <div>
         <h1>Table Doctores {this.props.especialidad}</h1>
-        <table>
+        <table border="1">
           <thead>
             <tr>
               <th>Apellido</th>
